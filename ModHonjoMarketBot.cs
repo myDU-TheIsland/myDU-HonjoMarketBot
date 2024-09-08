@@ -38,7 +38,7 @@ namespace HonjoMarketBot
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public override async Task Loop()
         {
-            Bot = await CreateUser("honjosminion", true, false).ConfigureAwait(false);
+            Bot = await CreateUser(this._config.BotName, true, false).ConfigureAwait(false);
             var bank = Bot.GameplayBank;
 
             foreach (var (key, value) in this._config.BuyRecursivePrices)
@@ -61,7 +61,7 @@ namespace HonjoMarketBot
 
             await this.SafeLoop(this.Action, 5000, async () =>
             {
-                Bot = await CreateUser("honjosminion", true, false).ConfigureAwait(false);
+                Bot = await CreateUser(this._config.BotName, true, false).ConfigureAwait(false);
             }).ConfigureAwait(false);
         }
 
@@ -93,16 +93,16 @@ namespace HonjoMarketBot
                 // loop over all my orders in this market
                 foreach (var order in orders.orders)
                 {
-                    if (order.ownerName == "marketbot" || order.ownerName == "honjosminion")
+                    if (order.ownerName == "marketbot" || order.ownerName == this._config.BotName)
                     {
                         // most likely a seeded order. skip
                         continue;
                     }
 
-                    Console.WriteLine($@"Expiration Time: {order.expirationDate.ToDateTime()}");
+                    //gets the difference in time between now and the expiration date of the order.
                     var diff = order.expirationDate.ToDateTime() - DateTime.UtcNow;
 
-                    if (diff.TotalDays > 1)
+                    if (diff.TotalDays > this._config.DaysToWaitBeforeExpiration)
                     {
                         // over 24hrs remaining, let others try to buy first.
                         continue;
@@ -132,6 +132,7 @@ namespace HonjoMarketBot
         /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
         public async Task Action()
         {
+            // iterate over all parents
             foreach (ulong parent in this._config.Planets)
             {
                 await this.BuyStuff(parent).ConfigureAwait(false);
