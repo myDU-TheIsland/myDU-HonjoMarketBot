@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HonjoBot</name>
+    </assembly>
+    <members>
+        <member name="T:HonjoBot.Classes.Mod">
+            Mod base class
+        </member>
+    </members>
+</doc>

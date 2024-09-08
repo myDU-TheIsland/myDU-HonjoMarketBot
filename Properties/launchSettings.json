@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "HonjoBot": {
+      "commandName": "Project",
+      "commandLineArgs": "dual.yaml honjo.json",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "QUEUEING": "http://localhost:9630",
+        "BOT_LOGIN": "",
+        "BOT_PASSWORD": ""
+      },
+      "applicationUrl": "https://localhost:51152;http://localhost:51153"
+    }
+  }
+}

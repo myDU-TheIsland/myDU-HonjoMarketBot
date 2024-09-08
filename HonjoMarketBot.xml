@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HonjoMarketBot</name>
+    </assembly>
+    <members>
+        <member name="T:HonjoMarketBot.Classes.HonjoConfig">
+            <summary>
+            A class containing the config settings for this mod.
+            </summary>
+        </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.BuyRecursivePrices">
+            <summary>
+            Gets or sets list of items to recursively buy and the top price to pay.
+            </summary>
+        </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.Planets">
+            <summary>
+            Gets or sets planets / parents to iterate over for markets.
+            </summary>
+        </member>
+        <member name="T:HonjoMarketBot.Classes.Mod">
+            Mod base class
+        </member>
+        <member name="P:HonjoMarketBot.Classes.Mod.RestDuClientFactory">
+            <summary>
+            Rest Client
+            </summary>
+        </member>
+        <member name="F:HonjoMarketBot.Classes.Mod.ServiceProvider">
+            <summary>
+            Service Provider
+            </summary>
+        </member>
+        <member name="F:HonjoMarketBot.Classes.Mod.Orleans">
+            <summary>
+            Orleans
+            </summary>
+        </member>
+        <member name="F:HonjoMarketBot.Classes.Mod.DataAccessor">
+            <summary>
+            Data Accessor
+            </summary>
+        </member>
+        <member name="F:HonjoMarketBot.Classes.Mod.Bot">
+            <summary>
+             The bot itself
+            </summary>
+        </member>
+        <member name="M:HonjoMarketBot.Classes.Mod.CreateUser(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Logins As Bot
+            </summary>
+            <param name="prefix"></param>
+            <param name="allowExisting"></param>
+            <param name="randomize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HonjoMarketBot.Classes.Mod.Setup">
+            <summary>
+            Configure the App
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HonjoMarketBot.Classes.Mod.Start">
+            <summary>
+            Simple Start Function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HonjoMarketBot.Classes.Mod.Loop">
+            <summary>
+            Loop Function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HonjoMarketBot.Classes.Mod.SafeLoop(System.Func{System.Threading.Tasks.Task},System.Int32,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            A Safe loop with a reconnect
+            </summary>
+            <param name="action"></param>
+            <param name="exceptionDelayMs"></param>
+            <param name="reconnect"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HonjoMarketBot.ModHonjoMarketBot">
+            <summary>
+            The main body of the bot.
+            </summary>
+        </member>
+        <member name="M:HonjoMarketBot.ModHonjoMarketBot.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HonjoMarketBot.ModHonjoMarketBot"/> class.
+            </summary>
+            <param name="confPath">path to the json file.</param>
+        </member>
+        <member name="M:HonjoMarketBot.ModHonjoMarketBot.Loop">
+            <summary>
+            Setups the bot and gets ready to start buying.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:HonjoMarketBot.ModHonjoMarketBot.BuyStuff(System.UInt64)">
+            <summary>
+            Buys items for us.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:HonjoMarketBot.ModHonjoMarketBot.Action">
+            <summary>
+                What the bot will do.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the result of the asynchronous operation.</returns>
+        </member>
+        <member name="T:HonjoMarketBot.Program">
+            <summary>
+            Main Entry point to app.
+            </summary>
+        </member>
+        <member name="M:HonjoMarketBot.Program.Main(System.String[])">
+            <summary>
+            Main Entry point to app.
+            </summary>
+            <param name="args">Paths to the config files.</param>
+        </member>
+    </members>
+</doc>
