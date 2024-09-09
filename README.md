@@ -41,5 +41,4 @@ docker-compose up -d mod_honjomarketbot
 ```
 
 * Make sure to put a copy of honjo.json into your `config` folder. (the one with dual.yaml)
-* Run the up script or `docker-compose up -d mod_honjomarketbot` directly
-* For debugging, tail the logs with `tail -f logs/Mod.log` or similar.
+* Run the up script or `docker-compose up -d mod_honjomarketbot` directly.
