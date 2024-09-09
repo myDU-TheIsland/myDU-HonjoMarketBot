@@ -41,6 +41,19 @@ namespace HonjoMarketBot
             Bot = await CreateUser(this._config.BotName, true, false).ConfigureAwait(false);
             var bank = Bot.GameplayBank;
 
+            foreach (var (key, value) in this._config.BuyPrices)
+            {
+                var entry = bank.GetDefinition(key);
+                if (entry.GetChildren().Count() != 0)
+                {
+                    // most likely a category, just continue
+                    continue;
+                }
+
+                this._buyPrices[entry.Id] = value * 100;
+            }
+
+            // iterate over recursive prices
             foreach (var (key, value) in this._config.BuyRecursivePrices)
             {
                 var baseEntry = bank.GetDefinition(key);
@@ -50,6 +63,7 @@ namespace HonjoMarketBot
                     var entry = bank.GetDefinition(childId);
                     if (entry.GetChildren().Count() != 0)
                     {
+                        // most likely a category, just continue
                         continue;
                     }
 

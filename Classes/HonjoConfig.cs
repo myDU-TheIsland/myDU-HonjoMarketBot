@@ -12,6 +12,11 @@ namespace HonjoMarketBot.Classes
     public class HonjoConfig
     {
         /// <summary>
+        /// Gets or sets list of items to buy and the top price to pay.
+        /// </summary>
+        public Dictionary<string, double> BuyPrices { get; set; } = new Dictionary<string, double>();
+
+        /// <summary>
         /// Gets or sets list of items to recursively buy and the top price to pay.
         /// </summary>
         public Dictionary<string, double> BuyRecursivePrices { get; set; } = new Dictionary<string, double>();

@@ -1,4 +1,7 @@
 {
+  "buyPrices": {
+    "XorOperator": 1500
+  },
   "buyRecursivePrices": {
     "Ore1": 30,
     "Ore2": 120,
@@ -8,5 +11,5 @@
   },
   "planets": [ 0, 2, 3, 21, 22, 26, 27, 30, 31 ],
   "DaysToWaitBeforeExpiration": 1,
-  "BotName":  "honjosminion"
+  "BotName": "honjosminion"
 }
