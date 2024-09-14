@@ -122,7 +122,7 @@ namespace HonjoMarketBot
                         continue;
                     }
 
-                    if (this._buyPrices[order.itemType] < order.unitPrice)
+                    if (this._buyPrices[order.itemType] <= order.unitPrice)
                     {
                         // over priced, don't touch;
                         continue;
