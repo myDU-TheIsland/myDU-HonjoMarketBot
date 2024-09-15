@@ -88,12 +88,14 @@ namespace HonjoMarketBot
             // get all markets on alioth (ALioths ID (Construct) is 2)
             var ml = await Bot.Req.MarketGetList(parent).ConfigureAwait(false);
 
-            // get all the market ids from the list
-            var mids = ml.markets.Select(x => x.marketId).ToList();
-
             // loop over each market
             foreach (var mkt in ml.markets)
             {
+                if (!this._config.MarketBudgetMultiplier.TryGetValue(mkt.marketId.ToString(), out double marketMultiplier))
+                {
+                    marketMultiplier = 1;
+                }
+
                 var doneIds = new List<ulong>();
 
                 // get my orders for this market
@@ -122,7 +124,9 @@ namespace HonjoMarketBot
                         continue;
                     }
 
-                    if (this._buyPrices[order.itemType] <= order.unitPrice)
+                    double budget = this._buyPrices[order.itemType] * marketMultiplier;
+
+                    if (budget <= order.unitPrice)
                     {
                         // over priced, don't touch;
                         continue;

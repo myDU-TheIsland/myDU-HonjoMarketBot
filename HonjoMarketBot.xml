@@ -9,14 +9,35 @@
             A class containing the config settings for this mod.
             </summary>
         </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.BuyPrices">
+            <summary>
+            Gets or sets list of items to buy and the top price to pay.
+            </summary>
+        </member>
         <member name="P:HonjoMarketBot.Classes.HonjoConfig.BuyRecursivePrices">
             <summary>
             Gets or sets list of items to recursively buy and the top price to pay.
             </summary>
         </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.MarketBudgetMultiplier">
+            <summary>
+            Gets or sets list of market ids and there multiplier.
+            </summary>
+        </member>
         <member name="P:HonjoMarketBot.Classes.HonjoConfig.Planets">
             <summary>
             Gets or sets planets / parents to iterate over for markets.
+            </summary>
+        </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.DaysToWaitBeforeExpiration">
+            <summary>
+            Gets or sets the numbers days to buy before expiration.
+            </summary>
+            <example> 1 means once its goes under 24hrs remaining itll buy if within the buy range.</example>
+        </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.BotName">
+            <summary>
+            Gets or sets the bot's player name.
             </summary>
         </member>
         <member name="T:HonjoMarketBot.Classes.Mod">
