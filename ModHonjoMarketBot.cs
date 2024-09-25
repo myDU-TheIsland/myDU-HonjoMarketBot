@@ -144,6 +144,42 @@ namespace HonjoMarketBot
             }
         }
 
+        public async Task SellStuff(ulong parent)
+        {
+            var ml = await Bot.Req.MarketGetList(parent).ConfigureAwait(false);
+
+            foreach (var mkt in ml.markets)
+            {
+                var storage = await Bot.Req.MarketContainerGetMyContent(new MarketSelectRequest
+                {
+                    marketIds = new List<ulong> { mkt.marketId },
+                    itemTypes = new List<ulong> { Bot.GameplayBank.GetDefinition<NQutils.Def.BaseItem>().Id },
+                }).ConfigureAwait(false);
+
+                foreach (var slot in storage.slots)
+                {
+                    if (!slot.purchased)
+                    {
+                        continue;
+                    }
+
+                    var type = slot.itemAndQuantity.item.type;
+                    var marketQty = slot.itemAndQuantity.quantity.value;
+
+                    Console.WriteLine($"Detected new {marketQty} of {type}");
+                    await Bot.Req.MarketPlaceOrder(new MarketRequest
+                    {
+                        marketId = mkt.marketId,
+                        source = MarketRequestSource.FROM_MARKET_CONTAINER,
+                        itemType = type,
+                        buyQuantity = -marketQty,
+                        expirationDate = DateTime.Now.AddDays(3000).ToNQTimePoint(),
+                        unitPrice = (long)(this._buyPrices[type] * this._config.BotMarkup * 100),
+                    }).ConfigureAwait(false);
+                }
+            }
+        }
+
         /// <summary>
         ///     What the bot will do.
         /// </summary>
@@ -154,6 +190,7 @@ namespace HonjoMarketBot
             foreach (ulong parent in this._config.Planets)
             {
                 await this.BuyStuff(parent).ConfigureAwait(false);
+                await this.SellStuff(parent).ConfigureAwait(false);
             }
 
             await Task.Delay(10000).ConfigureAwait(false);

@@ -40,6 +40,11 @@
             Gets or sets the bot's player name.
             </summary>
         </member>
+        <member name="P:HonjoMarketBot.Classes.HonjoConfig.BotMarkup">
+            <summary>
+            Gets or sets the bot's markup.
+            </summary>
+        </member>
         <member name="T:HonjoMarketBot.Classes.Mod">
             Mod base class
         </member>
