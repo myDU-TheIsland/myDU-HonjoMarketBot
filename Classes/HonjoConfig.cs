@@ -41,5 +41,10 @@ namespace HonjoMarketBot.Classes
         /// Gets or sets the bot's player name.
         /// </summary>
         public string BotName { get; set; } = "honjosminion";
+
+        /// <summary>
+        /// Gets or sets the bot's markup.
+        /// </summary>
+        public double BotMarkup { get; set; } = 1.1; // 10%
     }
 }
