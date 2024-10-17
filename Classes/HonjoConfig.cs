@@ -27,6 +27,11 @@ namespace HonjoMarketBot.Classes
         public Dictionary<string, double> MarketBudgetMultiplier { get; set; } = new Dictionary<string, double>();
 
         /// <summary>
+        /// Gets or sets list of market ids and there multiplier.
+        /// </summary>
+        public ulong[] OnlyTheseMarkets { get; set; } = { };
+
+        /// <summary>
         /// Gets or sets planets / parents to iterate over for markets.
         /// </summary>
         public ulong[] Planets { get; set; } = { 0 };

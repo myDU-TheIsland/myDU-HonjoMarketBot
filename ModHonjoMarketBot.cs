@@ -91,6 +91,14 @@ namespace HonjoMarketBot
             // loop over each market
             foreach (var mkt in ml.markets)
             {
+                if (this._config.OnlyTheseMarkets.Count() > 0)
+                {
+                    if (!this._config.OnlyTheseMarkets.Contains(mkt.marketId))
+                    {
+                        continue;
+                    }
+                }
+
                 if (!this._config.MarketBudgetMultiplier.TryGetValue(mkt.marketId.ToString(), out double marketMultiplier))
                 {
                     marketMultiplier = 1;
@@ -174,7 +182,7 @@ namespace HonjoMarketBot
                         itemType = type,
                         buyQuantity = -marketQty,
                         expirationDate = DateTime.Now.AddDays(3000).ToNQTimePoint(),
-                        unitPrice = (long)(this._buyPrices[type] * this._config.BotMarkup * 100),
+                        unitPrice = (long)(this._buyPrices[type] * this._config.BotMarkup),
                     }).ConfigureAwait(false);
                 }
             }

@@ -20,6 +20,7 @@
     "Ore4": 500,
     "Ore5": 1000
   },
+  "OnlyTheseMarkets": [170000],
   "planets": [ 0 ],
   "DaysToWaitBeforeExpiration": 1,
   "BotName": "honjosminion"
